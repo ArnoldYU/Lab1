@@ -6,9 +6,15 @@ import java.util.regex.Pattern;
 public class Expressions {
 	 //属性
     private String expression = "";//保存原表达式串
+<<<<<<< HEAD
 
     /**
      * 构造函数
+=======
+   
+    /**
+     * 构造函数(为了写实验报告专门做一次模拟修改 )
+>>>>>>> origin/1140310421
      */
     public Expressions(){}
     
@@ -18,13 +24,18 @@ public class Expressions {
      */
     public void setExpressions(String inputstr)
     {
+<<<<<<< HEAD
     	if (checkExpression(inputstr)) {
+=======
+    	if (checkExpressionByRE(inputstr)) {
+>>>>>>> origin/1140310421
     		expression = inputstr;
 		}
     	else{
     		System.out.println("The expression is wrong!Stupid!");
     	}
     }
+<<<<<<< HEAD
     
     
     /**
@@ -76,6 +87,22 @@ public class Expressions {
 		return true;
     }
     
+=======
+
+    /**
+     * 判断表达式合法性,采用正则表达式
+     * @param expression 输入的表达式
+     * @return 是否合法
+     */
+    private boolean checkExpressionByRE(String expression){
+    	String reNum="[0-9]*(\\.[0-9]+)?";//匹配整数或者小数（正数）
+		String reFactor=reNum+"+|[a-z]|[A-Z]";//匹配因子
+		String reItem="("+reFactor+")((\\*|\\^)("+reFactor+"))*";//匹配多项式
+		String reExp="("+reItem+")((\\+|-)("+reItem+"))*";//匹配表达式
+		Pattern pattern = Pattern.compile(reExp);
+        return pattern.matcher(expression).matches();
+    }
+>>>>>>> origin/1140310421
     /**
      * 表达式赋值
      * @param letter 要赋值的变量
